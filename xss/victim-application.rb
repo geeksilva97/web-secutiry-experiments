@@ -19,7 +19,7 @@ loop do
 
   session.print "HTTP/2.0 200\r\n"
   session.print "Content-Type: text/html\r\n"
-  session.print "Content-Security-Policy: script-src 'self';\r\n"
+  # session.print "Content-Security-Policy: script-src 'self';\r\n"
   session.print "Set-Cookie: token=any-secret-token\r\n"
   session.print "\r\n"
   session.print "Hello #{ERB::Util.html_escape query_params['name']}! The time is #{Time.now}"

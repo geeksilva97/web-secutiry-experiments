@@ -39,6 +39,7 @@ WARNING: even with cors error the request is sent.
 ### Defenses
 
 - CSP Header
+
     By adding the `content-security-policy` we can mitigate this risk. Simply defining a policy as `script-src 'self'`
     it blocks any script from outside world and the inline ones.
 
@@ -50,8 +51,8 @@ WARNING: even with cors error the request is sent.
     How to enable CSP in Rails -> https://www.stackhawk.com/blog/rails-content-security-policy-guide-what-it-is-and-how-to-enable-it/
 
 - Input sanitization
-    The bacic one. Just make sure you don't trust in the world. So, make some strip tags in the input you receive in
-    your app. In ruby you can use erb for that.
+
+    The bacic one. Just make sure you don't trust in the world. For example, add some escape to HTML tag in the input you receive. In ruby you can use erb for that.
 
     ```rb
     puts ERB::Util.html_escape '<script>alert("xss attack")</script>'
