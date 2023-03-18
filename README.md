@@ -26,6 +26,7 @@ a different origin. So, I could still steal cookies.
 ![passing a script tag](./xss/images/screenshot1-script.png)
 
 #### Stealing cookies
+
 For that I used the `cookie-stealer.js` but inside of another server written in `fake-js-file.rb`. This code serves the
 JS file which contains the malicious code.
 
@@ -62,3 +63,8 @@ WARNING: even with cors error the request is sent.
     that's a simple escape but it can keep us safe.
 
     ![escape](./xss/images/input-escape.png)
+
+- Http only cookies
+
+    To prevent your cookies from being read from client, ensure they are http only cookies. Also, make them `secure` so
+    they will be transferred only under HTTPS.
