@@ -28,8 +28,7 @@ get '/signin' do
 end
 
 post '/submit' do
-  # pp request.env['HTTP_REFERER']
-  response.headers['Access-Control-Allow-Origin'] = 'http://localhost'
+  return 'Unable to transfer money. Invalid csrf token' if params['csrf_token'] != csrf_token
 
   "$#{params[:amount]} transferred to <b>account:urn:#{ERB::Util.html_escape params['destination-account']} </b> successfully!"
 end

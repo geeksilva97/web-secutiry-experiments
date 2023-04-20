@@ -8,7 +8,6 @@ const htmlFileContent = require('fs').readFileSync('./cute-cat.html');
 const server = http.createServer((_req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/html');
-  // res.end('hello world');
   res.end(htmlFileContent);
 });
 

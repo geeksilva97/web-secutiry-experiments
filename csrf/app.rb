@@ -4,7 +4,7 @@ require 'tzinfo'
 
 before do
   headers 'Access-Control-Allow-Origin' => 'gambiarrabank.com',
-          'Access-Control-Allow-Methods' => %w[OPTIONS GET POST],
+          'Access-Control-Allow-Methods' => %w[OPTIONS],
           'Access-Control-Allow-Headers' => 'Content-Type'
 end
 
@@ -27,18 +27,17 @@ end
 
 get '/signin' do
   expiration_time = TZInfo::Timezone.get('America/Sao_Paulo').now + 3600
-  pp expiration_time
-  # response.set_cookie('some-random-cookie', value: 'some-random-value', http_only: true, same_site: 'Strict')
-  # response.set_cookie('sessid', value: 'somerandomstring', http_only: true, same_site: 'Strict')
 
-  response.set_cookie('some-random-cookie', value: 'some-random-value', http_only: true, expires: expiration_time)
-  response.set_cookie('sessid', value: 'somerandomstring', http_only: true, expires: expiration_time)
+  response.set_cookie('some-random-cookie', value: 'some-random-value', http_only: true, same_site: 'Strict')
+  response.set_cookie('sessid', value: 'somerandomstring', http_only: true, same_site: 'Strict')
+
+  # response.set_cookie('some-random-cookie', value: 'some-random-value', http_only: true, expires: expiration_time)
+  # response.set_cookie('sessid', value: 'somerandomstring', http_only: true, expires: expiration_time)
 end
 
 # Handle the POST request
 post '/submit' do
   # pp request.env['HTTP_REFERER']
-  response.headers['Access-Control-Allow-Origin'] = 'http://gambiarrabank.com'
 
   "$#{params[:amount]} transferred to <b>account:urn:#{ERB::Util.html_escape params['destination-account']} </b> successfully!"
 end
